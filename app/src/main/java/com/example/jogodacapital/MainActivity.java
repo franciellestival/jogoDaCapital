@@ -3,6 +3,9 @@ package com.example.jogodacapital;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import java.util.HashMap;
 import java.util.Random;
@@ -11,7 +14,9 @@ import java.util.Random;
 public class MainActivity extends AppCompatActivity {
 
     HashMap<String, String> capitalCities = new HashMap<>();
-
+    TextView stateText = findViewById(R.id.textViewEstado);
+    String capital;
+    int totalScore;
 
     public void populateCapitalCities() {
 
@@ -48,13 +53,29 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         populateCapitalCities();
+        sortState();
+    }
+
+    public void sortState(){
         Object[] arrayKeys = capitalCities.keySet().toArray();
         Object key = arrayKeys[new Random().nextInt(arrayKeys.length)];
-//        String teste = capitalCities.get(r.nextInt(capitalCities.size()));
-        String teste = capitalCities.get(key.toString());
+        stateText.setText(key.toString());
+        capital = capitalCities.get(key.toString());
+    }
 
-        System.out.println(key + " --> " + teste);
+    public void checkAnswer(View view){
+        TextView checkAnswer = findViewById(R.id.textViewResposta);
+        TextView score = findViewById(R.id.textViewPontuacao);
+        EditText answer = findViewById(R.id.editTextResposta);
+
+        if (answer.getText().equals(capital)) {
+            checkAnswer.setText("Você acertou!");
+            totalScore += 10;
+            score.setText(String.valueOf(totalScore));
+    } else {
+            checkAnswer.setText("Você errou!");
+            score.setText(String.valueOf(totalScore));
+        }
     }
 }
