@@ -10,10 +10,10 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
-    HashMap<String, String> capitalCities = new HashMap<String, String>();
-    Random r = new Random();
+    HashMap<String, String> capitalCities = new HashMap<>();
 
-    public void estadoCapital() {
+
+    public void populateCapitalCities() {
 
         capitalCities.put("Acre","Rio Branco");
         capitalCities.put("Alagoas","Maceió");
@@ -49,9 +49,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        estadoCapital();
-        String teste = capitalCities.get(r.nextInt(capitalCities.size()));
+        populateCapitalCities();
+        Object[] arrayKeys = capitalCities.keySet().toArray();
+        Object key = arrayKeys[new Random().nextInt(arrayKeys.length)];
+//        String teste = capitalCities.get(r.nextInt(capitalCities.size()));
+        String teste = capitalCities.get(key.toString());
 
-        System.out.println(teste);
+        System.out.println(key + " --> " + teste);
     }
 }
