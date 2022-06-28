@@ -22,6 +22,7 @@ Mencione todos aqueles que ajudaram a levantar o projeto desde o seu início
 
 * **Francielle Mazzarotto Stival** 
 * **Luis Augusto Ferraz de Souza**
+* **Allana de Almeida Flausino**
 
 ## 📄 Exemplo
 
